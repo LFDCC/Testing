@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{A229591C-6B4F-47CC-9AFE-84E3418E39AB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RedisPlus", "RedisPlus", "{EEAD8385-8647-4C84-B696-1B693A0883D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocketPlus", "SocketPlus", "{63F542DB-92D9-4CA2-9144-CB5DA9ACF660}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "生产消费模式", "生产消费模式", "{21665FC5-530E-4CA5-ADD2-3EE292104DAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "发布订阅模式", "发布订阅模式", "{53B15275-0F92-4288-92E2-BD05D3DECBB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "哨兵模式", "哨兵模式", "{7B2A5751-D79D-4844-8EA4-60F0F6C32E3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MQPlus", "MQPlus", "{6EEF0405-A28D-4BFD-B162-41B552F83D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketServer", "SocketServer\SocketServer.csproj", "{265B925F-38B2-40FF-B615-520541656C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +23,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A229591C-6B4F-47CC-9AFE-84E3418E39AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A229591C-6B4F-47CC-9AFE-84E3418E39AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A229591C-6B4F-47CC-9AFE-84E3418E39AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A229591C-6B4F-47CC-9AFE-84E3418E39AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{265B925F-38B2-40FF-B615-520541656C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{265B925F-38B2-40FF-B615-520541656C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265B925F-38B2-40FF-B615-520541656C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{265B925F-38B2-40FF-B615-520541656C7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21665FC5-530E-4CA5-ADD2-3EE292104DAF} = {EEAD8385-8647-4C84-B696-1B693A0883D9}
+		{53B15275-0F92-4288-92E2-BD05D3DECBB8} = {EEAD8385-8647-4C84-B696-1B693A0883D9}
+		{7B2A5751-D79D-4844-8EA4-60F0F6C32E3E} = {EEAD8385-8647-4C84-B696-1B693A0883D9}
+		{265B925F-38B2-40FF-B615-520541656C7B} = {63F542DB-92D9-4CA2-9144-CB5DA9ACF660}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C417907-3050-4FF0-AC63-53810CCB2CB7}
