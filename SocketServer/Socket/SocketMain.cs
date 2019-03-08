@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
-using SuperSocket.SocketBase.Logging;
-using SuperSocket.SocketBase.Protocol;
 
 namespace SocketServer.Socket
 {
     public class SocketMain
     {
-        private ILog log = new Log4NetLogFactory().GetLog("SocketMain");
-
         public SocketMain()
         {
             var config = new ServerConfig()
@@ -25,81 +20,58 @@ namespace SocketServer.Socket
                 MaxRequestLength = 2048, //最大包长度
                 Ip = "0.0.0.0",
                 Port = 2018,
-                MaxConnectionNumber = 100000,
+                MaxConnectionNumber = 100000
             };
 
             var appServer = new CustomServer();
 
             if (!appServer.Setup(config)) //Setup with listening port
             {
-                log.Info("socket启动成功！");
+                appServer.Logger.Info("socket启动成功！");
             }
             if (!appServer.Start())
             {
-                log.Error("socket启动失败！");
+                appServer.Logger.Error("socket启动失败！");
             }
-
             //注册事件
             appServer.NewRequestReceived += new RequestHandler<CustomSession, CustomRequestInfo>(appServer_NewRecivede);
             appServer.SessionClosed += new SessionHandler<CustomSession, CloseReason>(appServer_SessionClose);
-            //appServer.NewRequestReceived += new RequestHandler<AppSession, StringRequestInfo>(appServer_NewRecivede);
-            //appServer.SessionClosed += new SessionHandler<AppSession, SuperSocket.SocketBase.CloseReason>(appServer_SessionClose);
-            //appServer.NewSessionConnected += new SessionHandler<AppSession>(appServer_NewConnected);
+            appServer.NewSessionConnected += new SessionHandler<CustomSession>(appServer_NewConnected);
         }
 
-        private void appServer_SessionClose(AppSession session, CloseReason reason)
-        {
-        }
-
-        private void appServer_NewRecivede(AppSession session, StringRequestInfo requestInfo)
-        {
-        }
-
-        private void appServer_NewConnected(AppSession session)
+        private void appServer_NewConnected(CustomSession session)
         {
         }
 
         private void appServer_SessionClose(CustomSession session, CloseReason reason)
         {
-            log.Warn("客户端关闭：" + reason);
-            string deviceid = session.Items["deviceid"]?.ToString();
+            session.Logger.Warn("客户端关闭：" + reason);
+
+            if (session.Items.ContainsKey("deviceid"))
+            {
+                string deviceid = session.Items["deviceid"]?.ToString();
+            }
         }
 
         private void appServer_NewRecivede(CustomSession session, CustomRequestInfo requestInfo)
         {
-            byte[] bytes = requestInfo.Body;
-            if (bytes.Length == 0)
-            {
-                log.Info("无效请求！");
-                return;
-            }
+            var bytes = requestInfo.Body;
+            var key = requestInfo.Key;
 
-            if (bytes.Length == 6)
+            if (key == "deviceid")
             {
-                var cmd = bytes[0];
-                if (cmd == 0X01)
-                {
-                    var deviceid = byteToHexStr(bytes.Skip(1).Take(5).ToArray());
-                    session.Items["deviceid"] = deviceid;
-                }
+                var deviceid = byteToHexStr(bytes);
+                session.Items["deviceid"] = deviceid;
             }
-            else if (bytes.Length == 14)
+            else if (key == "cardid")
             {
-                var stx = bytes[0];
-                var cr = bytes[11];
-                var lf = bytes[12];
-                var etx = bytes[13];
-                //ASCII值 0X02正文开始 0X0D正文结束 0X0A换行 0X03回车
-                if (stx == 0X02 && cr == 0X0D && lf == 0X0A && etx == 0X03)
-                {
-                    var card = getcardno(Encoding.ASCII.GetString(bytes.Skip(1).Take(10).ToArray()));
-                }
+                var card = getcardno(bytes);
             }
         }
 
         public string byteToHexStr(byte[] bytes)
         {
-            string returnStr = "";
+            var returnStr = "";
             if (bytes != null)
             {
                 for (int i = 0; i < bytes.Length; i++)
@@ -110,10 +82,11 @@ namespace SocketServer.Socket
             return returnStr;
         }
 
-        public string getcardno(string result)
+        public string getcardno(byte[] bytes)
         {
-            string card = Convert.ToInt64(result, 16).ToString();
-            string zero = "";
+            var str = Encoding.ASCII.GetString(bytes);
+            var card = Convert.ToInt64(str, 16).ToString();
+            var zero = "";
             for (int i = 0; i < (10 - card.Length); i++)
             {
                 zero += "0";

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using CSRedis;
 
 namespace 消费者
@@ -11,7 +12,6 @@ namespace 消费者
 
             //while (true)
             //{
-
             //    Console.WriteLine(csredis.BRPop(60, "list"));
 
             //}

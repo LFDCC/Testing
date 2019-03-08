@@ -75,7 +75,6 @@
     <Compile Include="Socket\Business.cs" />
     <Compile Include="Socket\CustomSession.cs" />
     <Compile Include="Socket\CustomReceiveFilter.cs" />
-    <Compile Include="Socket\CustomReceiveFilterHelper.cs" />
     <Compile Include="Socket\CustomRequestInfo.cs" />
     <Compile Include="Socket\CustomServer.cs" />
     <Compile Include="Socket\SocketMain.cs" />
@@ -88,8 +87,12 @@
     <None Include="Config\Core.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Config\log4net.config" />
-    <None Include="Config\log4net.unix.config" />
+    <None Include="Config\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\log4net.unix.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="supersocket.cmd" />
     <None Include="supersocket.sh" />

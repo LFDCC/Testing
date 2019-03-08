@@ -13,7 +13,8 @@ namespace 生产者
             {
                 Console.WriteLine("请输入：");
                 var word = Console.ReadLine();
-                csredis.LPush("list", word);
+                csredis.RPush("list", word);
+                //csredis.LPush("list", word);
             }
         }
     }
