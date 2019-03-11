@@ -45,11 +45,12 @@ namespace SocketServer.Socket
 
         private void appServer_SessionClose(CustomSession session, CloseReason reason)
         {
-            session.Logger.Warn("客户端关闭：" + reason);
+
 
             if (session.Items.ContainsKey("deviceid"))
             {
                 string deviceid = session.Items["deviceid"]?.ToString();
+                session.Logger.Warn($"客户端{deviceid}关闭：" + reason);
             }
         }
 
@@ -62,6 +63,7 @@ namespace SocketServer.Socket
             {
                 var deviceid = byteToHexStr(bytes);
                 session.Items["deviceid"] = deviceid;
+                session.Logger.Debug($"客户端{deviceid}连接");
             }
             else if (key == "cardid")
             {

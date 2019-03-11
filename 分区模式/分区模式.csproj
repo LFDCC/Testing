@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37B98D9A-3F6C-4217-9925-339F15C1246E}</ProjectGuid>
+    <ProjectGuid>{5B646CA9-ECB3-4BCD-AF78-ACCDF702BC5C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>订阅者</RootNamespace>
-    <AssemblyName>订阅者</AssemblyName>
+    <RootNamespace>分区模式</RootNamespace>
+    <AssemblyName>分区模式</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
