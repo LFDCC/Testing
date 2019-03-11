@@ -33,14 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSRedisCore, Version=3.0.44.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSRedisCore.3.0.44\lib\netstandard2.0\CSRedisCore.dll</HintPath>
+    <Reference Include="CSRedisCore, Version=3.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSRedisCore.3.0.45\lib\netstandard2.0\CSRedisCore.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SafeObjectPool, Version=1.0.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SafeObjectPool.1.0.14\lib\netstandard2.0\SafeObjectPool.dll</HintPath>
+    <Reference Include="SafeObjectPool, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SafeObjectPool.2.0.1\lib\netstandard2.0\SafeObjectPool.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

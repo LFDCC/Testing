@@ -45,8 +45,6 @@ namespace SocketServer.Socket
 
         private void appServer_SessionClose(CustomSession session, CloseReason reason)
         {
-
-
             if (session.Items.ContainsKey("deviceid"))
             {
                 string deviceid = session.Items["deviceid"]?.ToString();
@@ -68,6 +66,7 @@ namespace SocketServer.Socket
             else if (key == "cardid")
             {
                 var card = getcardno(bytes);
+                session.Logger.Debug($"卡号：{card}");
             }
         }
 
